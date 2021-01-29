@@ -10,7 +10,6 @@ func main() {
 	}
 	for _, num := range soi {
 		newNum := num % 2
-		fmt.Printf("%v", newNum)
 		if newNum == 0 {
 			fmt.Printf("%v is an even number", num)
 		} else {
