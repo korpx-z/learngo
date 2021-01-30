@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+//as long as a type calls getGreeting() and returns a string.. it will be considered type bot (interface) as well.
 type bot interface {
 	getGreeting() string
 }
