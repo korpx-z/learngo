@@ -7,6 +7,8 @@ import (
 
 func main() {
 
+	c := make(chan string)
+
 	var links []string
 	links = append(links,
 		"http://www.google.com",
@@ -14,15 +16,20 @@ func main() {
 	)
 
 	for _, link := range links {
-		checkLink(link)
+		go checkLink(link, c)
+	}
+
+	for {
+		go checkLink(<-c, c)
 	}
 }
 
-func checkLink(link string) {
+func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Printf("%+v", err)
-		return
+		c <- link
 	}
 	fmt.Printf("%v"+" "+"is up! \n", link)
+	c <- link
 }
