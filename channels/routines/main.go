@@ -24,5 +24,5 @@ func checkLink(link string) {
 		fmt.Printf("%+v", err)
 		return
 	}
-	fmt.Printf("%v"+" "+"is up!", link)
+	fmt.Printf("%v"+" "+"is up! \n", link)
 }
